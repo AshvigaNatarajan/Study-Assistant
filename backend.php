@@ -2,7 +2,7 @@
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: text/plain');
 
-$apiKey = "AIzaSyCWdQ5xwfYETqf785YLJ2OYwLclos1vsOA";  // Replace with your key
+$apiKey = "Your_API_Key";  // Replace with your key
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $type = $_POST['type'] ?? '';
@@ -58,3 +58,4 @@ function callGeminiAPI($prompt, $apiKey) {
     }
 }
 ?>
+
