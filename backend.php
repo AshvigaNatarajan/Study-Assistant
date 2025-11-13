@@ -20,9 +20,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         case 'quiz':
             $prompt = "Generate 5 multiple choice quiz questions with 4 options each and show answers at the end based on this content:\n\n$text";
             break;
-        // case 'flashcards':
-        //     $prompt = "Create 10 study flashcards in JSON format [{\"question\":\"\",\"answer\":\"\"}] from this text:\n\n$text";
-        //     break;
         default:
             echo "Error: Unknown type.";
             exit;
@@ -58,4 +55,5 @@ function callGeminiAPI($prompt, $apiKey) {
     }
 }
 ?>
+
 
