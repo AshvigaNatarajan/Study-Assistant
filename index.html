@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Study Assistant</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>AI Study Assistant 🤖</h1>
+
+    <form id="aiForm">
+      <textarea id="inputText" placeholder="Paste your study notes or paragraph..." rows="10"></textarea>
+      <div class="buttons">
+        <button type="button" onclick="callAPI('summary')">Summarize</button>
+        <button type="button" onclick="callAPI('quiz')">Generate Quiz</button>
+        <!-- <button type="button" onclick="callAPI('flashcards')">Flashcards</button> -->
+      </div>
+    </form>
+
+    <div class="output">
+      <h2>Output:</h2>
+      <pre id="result"></pre>
+    </div>
+  </div>
+
+  <script>
+    async function callAPI(type) {
+      const text = document.getElementById('inputText').value.trim();
+      if (!text) {
+        alert("Please enter some text!");
+        return;
+      }
+
+      document.getElementById('result').textContent = "⏳ Generating...";
+
+      const formData = new FormData();
+      formData.append("type", type);
+      formData.append("text", text);
+
+      const res = await fetch("backend.php", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await res.text();
+      document.getElementById('result').textContent = data;
+    }
+  </script>
+</body>
+</html>
